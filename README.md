@@ -11,4 +11,5 @@ A basic set of packages to test API with TypeScript:
 [APOD NASA API](https://api.nasa.gov) is choosen as an example
 
 Tested host could be passed to tests through .env variable:
+
 `HOST=https://api.nasa.gov npm run test`
