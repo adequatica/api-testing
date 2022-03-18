@@ -6,7 +6,7 @@
     "type": "git",
     "url": "https://github.com/enotramone/api-testing"
   },
-  "author": "Andrey Yenin <enotramone@gmail.com>",
+  "author": "Andrey Enin <enotramone@gmail.com>",
   "license": "MIT",
   "engines": {
     "node": ">=12"
