@@ -25,6 +25,7 @@
   },
   "scripts": {
     "format": "npx prettier --write .",
-    "test": "jest --config jest.config.js"
+    "test": "jest --runInBand --config jest.config.js",
+    "test:custom_filter": "jest --runInBand --config jest.config.js -t rest"
   }
 }
