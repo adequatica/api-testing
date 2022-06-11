@@ -31,6 +31,5 @@ Example API: [APOD NASA API](https://api.nasa.gov).
 ### Exaples of Test Cases
 
 - `apod.test.ts` — test with JSON schema validation;
-- `epic.test.ts` — test will [skip](https://jestjs.io/docs/api#describeskipname-fn) in inappropriate environment; test has [a loop through array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) for cheking elements;
+- `epic.test.ts` — test will [skip](https://jestjs.io/docs/api#describeskipname-fn) in an inappropriate environment; test has [a loop through array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) for checking elements;
 - `neo.test.ts` — test with timeout before request.
-
