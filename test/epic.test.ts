@@ -52,9 +52,9 @@ describeHostIf(`Request ${HOST}${ENDPOINT}?${queryParams(QUERY)}`, () => {
   });
 
   it('Should have identifiers in each element of the body', () => {
-    for (let elem of response.body) { 
-      expect(typeof elem.identifier).toBe('string');
-      expect(elem.identifier).not.toHaveLength(0);
-    }
+    response.body.forEach((element: any) => {
+      expect(typeof element.identifier).toBe('string');
+      expect(element.identifier).not.toHaveLength(0);
+    });
   });
 });
