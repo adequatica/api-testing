@@ -17,7 +17,8 @@ const QUERY = {
 type ResponseData = any;
 
 // Skip all tests in describe if the host is not https://api.nasa.gov
-const describeHostIf = HOST === 'https://api.nasa.gov' ? describe : describe.skip;
+const describeHostIf =
+  HOST === 'https://api.nasa.gov' ? describe : describe.skip;
 
 // Describe consists from a variables to show the request in the output:
 // «Request https://api.nasa.gov/EPIC/api/natural?api_key=DEMO_KEY»

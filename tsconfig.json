@@ -1,5 +1,5 @@
 {
-  "include": ["test", "utils"],
+  "include": ["testss", "utils"],
   "compilerOptions": {
     "esModuleInterop": true,
     "strict": true

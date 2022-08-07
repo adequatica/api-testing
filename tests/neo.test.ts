@@ -32,13 +32,13 @@ describe(`Request ${HOST}${ENDPOINT}?${queryParams(QUERY)}`, () => {
       setTimeout(() => {
         got
           .get(`${HOST}${ENDPOINT}`, {
-          responseType: 'json',
-          searchParams: QUERY,
-        })
-      .then(resolve)
-      .catch(reject);
-    }, SLEEP_TIMEOUT);
-  });
+            responseType: 'json',
+            searchParams: QUERY,
+          })
+          .then(resolve)
+          .catch(reject);
+      }, SLEEP_TIMEOUT);
+    });
   }, BEFORE_ALL_TIMEOUT);
 
   it('Should have response status 200', () => {
@@ -46,7 +46,9 @@ describe(`Request ${HOST}${ENDPOINT}?${queryParams(QUERY)}`, () => {
   });
 
   it('Should have content-type = application/json;charset=UTF-8', () => {
-    expect(responseWithSleep.headers['content-type']).toBe('application/json;charset=UTF-8');
+    expect(responseWithSleep.headers['content-type']).toBe(
+      'application/json;charset=UTF-8'
+    );
   });
 
   it('Should have default page size = 20 elements', () => {
