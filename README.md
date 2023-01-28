@@ -8,7 +8,8 @@ A basic set of packages to test API with TypeScript:
 - [Got](https://github.com/sindresorhus/got) — library for HTTP requests;
 - [Ajv](https://ajv.js.org) — a JSON schema validator;
 - [date-fns](https://date-fns.org) — library for dates;
-- [Prettier](https://prettier.io) — code formatter.
+- [Prettier](https://prettier.io) — code formatter;
+- [ESLint](https://eslint.org/) – code linter.
 
 Example API for testing: [APOD NASA API](https://api.nasa.gov).
 
