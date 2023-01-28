@@ -1,5 +1,5 @@
 import got from 'got';
-import type { Response } from 'got';
+import type { CancelableRequest } from 'got';
 import { formatISO, subDays } from 'date-fns';
 import { URLSearchParams } from 'url';
 
@@ -42,12 +42,10 @@ const QUERY = {
   api_key: 'DEMO_KEY',
 };
 
-type ResponseData = any;
-
 // Describe consists from a variables to show the request in the output:
 // «Request https://api.nasa.gov/planetary/apod?date=2022-06-05&api_key=DEMO_KEY»
 describe(`Request ${HOST}${ENDPOINT}?${queryParams(QUERY)}`, () => {
-  let response: Response<ResponseData>;
+  let response: CancelableRequest | any;
 
   beforeAll(async () => {
     try {

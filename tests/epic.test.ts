@@ -1,5 +1,5 @@
 import got from 'got';
-import type { Response } from 'got';
+import type { CancelableRequest } from 'got';
 import { URLSearchParams } from 'url';
 
 import { BEFORE_ALL_TIMEOUT, HOST } from '../utils/env';
@@ -14,8 +14,6 @@ const QUERY = {
   api_key: 'DEMO_KEY',
 };
 
-type ResponseData = any;
-
 // Skip all tests in describe if the host is not https://api.nasa.gov
 const describeHostIf =
   HOST === 'https://api.nasa.gov' ? describe : describe.skip;
@@ -23,7 +21,7 @@ const describeHostIf =
 // Describe consists from a variables to show the request in the output:
 // «Request https://api.nasa.gov/EPIC/api/natural?api_key=DEMO_KEY»
 describeHostIf(`Request ${HOST}${ENDPOINT}?${queryParams(QUERY)}`, () => {
-  let response: Response<ResponseData>;
+  let response: CancelableRequest | any;
 
   beforeAll(async () => {
     try {

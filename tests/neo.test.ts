@@ -1,5 +1,5 @@
 import got from 'got';
-import type { Response } from 'got';
+import type { CancelableRequest } from 'got';
 import { URLSearchParams } from 'url';
 
 import { BEFORE_ALL_TIMEOUT, HOST } from '../utils/env';
@@ -14,12 +14,10 @@ const QUERY = {
   api_key: 'DEMO_KEY',
 };
 
-type ResponseData = any;
-
 // Describe consists from a variables to show the request in the output:
 // «Request https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=DEMO_KEY»
 describe(`Request ${HOST}${ENDPOINT}?${queryParams(QUERY)}`, () => {
-  let responseWithSleep: Response<ResponseData>;
+  let responseWithSleep: CancelableRequest | any;
 
   beforeAll(async () => {
     // setTimeout does not work without it
@@ -45,10 +43,8 @@ describe(`Request ${HOST}${ENDPOINT}?${queryParams(QUERY)}`, () => {
     expect(responseWithSleep.statusCode).toBe(200);
   });
 
-  it('Should have content-type = application/json;charset=UTF-8', () => {
-    expect(responseWithSleep.headers['content-type']).toBe(
-      'application/json;charset=UTF-8'
-    );
+  it('Should have content-type = application/json', () => {
+    expect(responseWithSleep.headers['content-type']).toBe('application/json');
   });
 
   it('Should have default page size = 20 elements', () => {
