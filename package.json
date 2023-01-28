@@ -19,12 +19,17 @@
   },
   "devDependencies": {
     "@types/jest": "^29.4.0",
+    "@typescript-eslint/eslint-plugin": "^5.49.0",
+    "@typescript-eslint/parser": "^5.49.0",
+    "eslint": "^8.32.0",
     "prettier": "^2.8.3",
     "typescript": "^4.9.4",
     "ts-jest": "^29.0.5"
   },
   "scripts": {
     "format": "npx prettier --write .",
+    "lint": "eslint '**/*.{js,ts}'",
+    "lint:fix": "eslint --fix '**/*.{js,ts}'",
     "test": "jest --runInBand --config jest.config.js",
     "test:custom-filter": "jest --runInBand --config jest.config.js -t rest"
   }
