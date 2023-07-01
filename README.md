@@ -1,4 +1,4 @@
-# API Testing with TypeScript
+# API Testing with TypeScript, Jest, and Got 
 
 ## Stack
 
@@ -16,7 +16,7 @@ Example API for testing: [APOD NASA API](https://api.nasa.gov).
 ## How to Use
 
 1. Clone repository
-2. Intall dependencies: `npm install`
+2. Install dependencies: `npm install`
 3. Run tests: `npm run test`
 
 ### CLI Options
@@ -33,8 +33,8 @@ Example API for testing: [APOD NASA API](https://api.nasa.gov).
 
 `npm run test tests/apod.test.ts`
 
-## Exaples of Test Cases
+## Examples of Test Cases
 
 - `apod.test.ts` — test with JSON schema validation;
 - `epic.test.ts` — test will [skip](https://jestjs.io/docs/api#describeskipname-fn) in an inappropriate environment; test has [a loop through array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) for checking elements;
-- `neo.test.ts` — test with timeout before request.
+- `neo.test.ts` — test with a timeout before request.
