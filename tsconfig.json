@@ -1,7 +1,16 @@
 {
   "include": ["tests", "utils"],
   "compilerOptions": {
+    // Recomendations for GOT to work with "import"
+    "module": "node16",
+    "moduleResolution": "node16",
+    // Setting for allowing imports from .ts files, due to "node16" rules
+    "noEmit": true,
+    "emitDeclarationOnly": false,
+    "allowImportingTsExtensions": true,
+
     "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
     "strict": true
   }
 }

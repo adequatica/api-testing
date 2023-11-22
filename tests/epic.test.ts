@@ -1,18 +1,14 @@
 import got from 'got';
 import type { CancelableRequest } from 'got';
-import { URLSearchParams } from 'url';
 
-import { BEFORE_ALL_TIMEOUT, HOST } from '../utils/env';
-
-const queryParams = (json: any) => {
-  return new URLSearchParams(json).toString();
-};
-
-const ENDPOINT = '/EPIC/api/natural';
+import { BEFORE_ALL_TIMEOUT, HOST } from '../utils/env.ts';
+import { queryParams } from '../utils/query-params.ts';
 
 const QUERY = {
   api_key: 'DEMO_KEY',
 };
+
+const ENDPOINT = '/EPIC/api/natural';
 
 // Skip all tests in describe if the host is not https://api.nasa.gov
 const describeHostIf =
@@ -51,8 +47,8 @@ describeHostIf(`Request ${HOST}${ENDPOINT}?${queryParams(QUERY)}`, () => {
   });
 
   it('Should have identifiers in each element of the body', () => {
-    response.body.forEach((element: any) => {
-      expect(typeof element.identifier).toBe('string');
+    // Just an example of a loop through array, not a pattern to follow in tests
+    response.body.forEach((element: { identifier: string }) => {
       expect(element.identifier).not.toHaveLength(0);
     });
   });

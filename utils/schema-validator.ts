@@ -1,16 +1,17 @@
 import Ajv from 'ajv';
 
-const ajv = new Ajv();
+const ajv = new Ajv.default();
 
-function validateSchema(schema: any, data: any): true | unknown {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const validateSchema: true | any = (schema: any, inputData: any) => {
   const validate = ajv.compile(schema);
 
-  if (validate(data)) {
+  if (validate(inputData)) {
     return true;
   } else {
-    // if scheme does not valid, we need to receive error massage instead of 'false'
+    // If scheme does not valid, we will receive an error massage, instead of "false"
     return validate.errors;
   }
-}
+};
 
 export { validateSchema };
