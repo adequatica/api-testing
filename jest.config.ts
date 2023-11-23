@@ -12,6 +12,8 @@ const config: JestConfigWithTsJest = {
   },
   extensionsToTreatAsEsm: ['.ts'],
 
+  setupFilesAfterEnv: ['./test-setup.ts'],
+
   verbose: true,
   preset: 'ts-jest',
   testEnvironment: 'node',

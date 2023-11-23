@@ -1,6 +1,7 @@
 import Ajv from 'ajv';
 
-const ajv = new Ajv.default();
+// https://ajv.js.org/strict-mode.html#prevent-unexpected-validation
+const ajv = new Ajv.default({ allowMatchingProperties: true });
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const validateSchema: true | any = (schema: any, inputData: any) => {

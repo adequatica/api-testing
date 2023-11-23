@@ -1,6 +1,5 @@
 import got from 'got';
 import type { CancelableRequest } from 'got';
-import { formatISO, subDays } from 'date-fns';
 
 import { API_KEY, BEFORE_ALL_TIMEOUT, HOST } from '../utils/env.ts';
 import { validateSchema } from '../utils/schema-validator.ts';
@@ -9,38 +8,42 @@ import { queryParams } from '../utils/query-params.ts';
 const SCHEMA = {
   type: 'object',
   properties: {
-    copyright: { type: 'string' },
-    date: { type: 'string' },
-    explanation: { type: 'string' },
-    hdurl: { type: 'string' },
-    media_type: { type: 'string' },
-    service_version: { type: 'string' },
-    title: { type: 'string' },
-    url: { type: 'string' },
+    sol_keys: { type: 'array' },
+    validity_checks: {
+      type: 'object',
+      properties: {
+        sol_hours_required: { type: 'number' },
+        sols_checked: { type: 'array' },
+      },
+      // https://ajv.js.org/json-schema.html#patternproperties
+      patternProperties: {
+        '\\d{4}': { type: 'object' },
+      },
+      additionalProperties: false,
+    },
   },
   required: [
-    'date',
-    'explanation',
-    'media_type',
-    'service_version',
-    'title',
-    'url',
+    'sol_keys',
+    'validity_checks',
   ],
   additionalProperties: false,
 } as const;
 
-const now = new Date();
-
 const QUERY = {
-  date: formatISO(subDays(now, 1), { representation: 'date' }),
   api_key: API_KEY,
+  feedtype: 'json',
+  ver: '1.0',
 };
 
-const ENDPOINT = '/planetary/apod';
+const ENDPOINT = '/insight_weather/';
+
+// Skip all tests in describe if the host is not https://api.nasa.gov
+const describeHostIf =
+  HOST === 'https://api.nasa.gov' ? describe : describe.skip;
 
 // Describe consists from a variables to show the request in the output:
-// «Request https://api.nasa.gov/planetary/apod?date=2022-06-05&api_key=DEMO_KEY»
-describe(`Request ${HOST}${ENDPOINT}?${queryParams(QUERY)}`, () => {
+// «Request https://api.nasa.gov/insight_weather/?feedtype=json&ver=1.0&api_key=DEMO_KEY»
+describeHostIf(`Request ${HOST}${ENDPOINT}?${queryParams(QUERY)}`, () => {
   let response: CancelableRequest | any;
 
   beforeAll(async () => {
@@ -62,8 +65,8 @@ describe(`Request ${HOST}${ENDPOINT}?${queryParams(QUERY)}`, () => {
     expect(response.statusCode).toBe(200);
   });
 
-  test('Should have content-type = application/json', () => {
-    expect(response.headers['content-type']).toBe('application/json');
+  test('Should have content-type = application/json;charset=utf-8', () => {
+    expect(response.headers['content-type']).toBe('application/json;charset=utf-8');
   });
 
   test('Should have valid schema', () => {

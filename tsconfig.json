@@ -11,6 +11,10 @@
 
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "strict": true
+    "strict": true,
+
+    // This fix TS error for custom matchers:
+    // Property "toBeWithin" does not exist on type "JestMatchers<any>".
+    "types": ["jest", "jest-extended"],
   }
 }

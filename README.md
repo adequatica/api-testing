@@ -5,6 +5,7 @@
 A basic set of packages to test API with TypeScript and HTTP client:
 
 - [Jest](https://jestjs.io) — testing framework;
+- [Jest-extended](https://jest-extended.jestcommunity.dev) — additional Jest matchers;
 - [Got](https://github.com/sindresorhus/got) — library for HTTP requests;
 - [Ajv](https://ajv.js.org) — the fastest JSON schema validator;
 - [date-fns](https://date-fns.org) — library for dates;
@@ -21,9 +22,13 @@ Example API for testing: [APOD NASA API](https://api.nasa.gov).
 
 ### CLI Options
 
-- Different tested host could be passed to tests through `.env` variable:
+- Different tested host could be passed to tests through `.env` variable (it can be useful for testing different environments):
 
 `HOST=https://api.nasa.gov npm run test`
+
+- Individual API key could be passed to tests through `.env` variable (otherwise, it will be used `DEMO_KEY` value):
+
+`API_KEY={api_key} npm run test`
 
 - Run a single test or tests [that match a specific filename](https://jestjs.io/docs/cli#running-from-the-command-line) (for example `epic.test.ts`):
 
@@ -32,7 +37,8 @@ Example API for testing: [APOD NASA API](https://api.nasa.gov).
 ## Examples of Test Cases
 
 - `apod.test.ts` — test with JSON schema validation;
-- `epic.test.ts` — test will [skip](https://jestjs.io/docs/api#describeskipname-fn) in an inappropriate environment; test has [a loop through array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) for checking elements (just as an example, not as a pattern to follow).
+- `epic.test.ts` — test has [a loop through array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) for checking elements with jest-extended assert;
+- `insight-weather.test.ts` — test will conditionally [skip](https://jestjs.io/docs/api#describeskipname-fn) in an inappropriate environment.
 
 ---
 
