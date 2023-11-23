@@ -1,5 +1,5 @@
 {
-  "include": ["**/*.ts"],
+  "include": ["tests", "utils", "./jest-setup.ts", "./jest.config.ts"],
   "compilerOptions": {
     // Recomendations for GOT to work with "import"
     "module": "node16",

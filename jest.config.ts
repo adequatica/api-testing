@@ -12,7 +12,7 @@ const config: JestConfigWithTsJest = {
   },
   extensionsToTreatAsEsm: ['.ts'],
 
-  setupFilesAfterEnv: ['./test-setup.ts'],
+  setupFilesAfterEnv: ['./jest-setup.ts'],
 
   verbose: true,
   preset: 'ts-jest',
