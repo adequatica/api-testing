@@ -38,7 +38,7 @@ Example API for testing: [APOD NASA API](https://api.nasa.gov).
 
 - `apod.test.ts` — test with JSON schema validation;
 - `epic.test.ts` — test has [a loop through array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) for checking elements with jest-extended assert;
-- `insight-weather.test.ts` — test will conditionally [skip](https://jestjs.io/docs/api#describeskipname-fn) in an inappropriate environment.
+- `insight-weather.test.ts` — test will be conditionally [skipped](https://jestjs.io/docs/api#describeskipname-fn) in an inappropriate environment.
 
 ---
 

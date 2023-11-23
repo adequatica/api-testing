@@ -3,8 +3,8 @@ import type { CancelableRequest } from 'got';
 import { formatISO, subDays } from 'date-fns';
 
 import { API_KEY, BEFORE_ALL_TIMEOUT, HOST } from '../utils/env.ts';
-import { validateSchema } from '../utils/schema-validator.ts';
 import { queryParams } from '../utils/query-params.ts';
+import { validateSchema } from '../utils/schema-validator.ts';
 
 const SCHEMA = {
   type: 'object',
@@ -31,7 +31,7 @@ const SCHEMA = {
 
 const now = new Date();
 
-const QUERY = {
+const urlQuery = {
   date: formatISO(subDays(now, 1), { representation: 'date' }),
   api_key: API_KEY,
 };
@@ -40,14 +40,14 @@ const ENDPOINT = '/planetary/apod';
 
 // Describe consists from a variables to show the request in the output:
 // «Request https://api.nasa.gov/planetary/apod?date=2022-06-05&api_key=DEMO_KEY»
-describe(`Request ${HOST}${ENDPOINT}?${queryParams(QUERY)}`, () => {
+describe(`Request ${HOST}${ENDPOINT}?${queryParams(urlQuery)}`, () => {
   let response: CancelableRequest | any;
 
   beforeAll(async () => {
     try {
       response = await got.get(`${HOST}${ENDPOINT}`, {
         responseType: 'json',
-        searchParams: QUERY,
+        searchParams: urlQuery,
       });
     } catch (error: any) {
       if (!error.response) {

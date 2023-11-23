@@ -2,8 +2,8 @@ import got from 'got';
 import type { CancelableRequest } from 'got';
 
 import { API_KEY, BEFORE_ALL_TIMEOUT, HOST } from '../utils/env.ts';
-import { validateSchema } from '../utils/schema-validator.ts';
 import { queryParams } from '../utils/query-params.ts';
+import { validateSchema } from '../utils/schema-validator.ts';
 
 const SCHEMA = {
   type: 'object',
@@ -22,14 +22,11 @@ const SCHEMA = {
       additionalProperties: false,
     },
   },
-  required: [
-    'sol_keys',
-    'validity_checks',
-  ],
+  required: ['sol_keys', 'validity_checks'],
   additionalProperties: false,
 } as const;
 
-const QUERY = {
+const urlQuery = {
   api_key: API_KEY,
   feedtype: 'json',
   ver: '1.0',
@@ -43,14 +40,14 @@ const describeHostIf =
 
 // Describe consists from a variables to show the request in the output:
 // «Request https://api.nasa.gov/insight_weather/?feedtype=json&ver=1.0&api_key=DEMO_KEY»
-describeHostIf(`Request ${HOST}${ENDPOINT}?${queryParams(QUERY)}`, () => {
+describeHostIf(`Request ${HOST}${ENDPOINT}?${queryParams(urlQuery)}`, () => {
   let response: CancelableRequest | any;
 
   beforeAll(async () => {
     try {
       response = await got.get(`${HOST}${ENDPOINT}`, {
         responseType: 'json',
-        searchParams: QUERY,
+        searchParams: urlQuery,
       });
     } catch (error: any) {
       if (!error.response) {
@@ -66,7 +63,15 @@ describeHostIf(`Request ${HOST}${ENDPOINT}?${queryParams(QUERY)}`, () => {
   });
 
   test('Should have content-type = application/json;charset=utf-8', () => {
-    expect(response.headers['content-type']).toBe('application/json;charset=utf-8');
+    // Handler's content type can vary from time to time
+    const contentTypes = [
+      'application/json;charset=utf-8',
+      'application/json;charset=UTF-8',
+    ];
+    // https://jestjs.io/docs/expect#expectarraycontainingarray
+    expect(contentTypes).toEqual(
+      expect.arrayContaining([response.headers['content-type']]),
+    );
   });
 
   test('Should have valid schema', () => {

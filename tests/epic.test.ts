@@ -4,7 +4,7 @@ import type { CancelableRequest } from 'got';
 import { API_KEY, BEFORE_ALL_TIMEOUT, HOST } from '../utils/env.ts';
 import { queryParams } from '../utils/query-params.ts';
 
-const QUERY = {
+const urlQuery = {
   api_key: API_KEY,
 };
 
@@ -12,14 +12,14 @@ const ENDPOINT = '/EPIC/api/natural';
 
 // Describe consists from a variables to show the request in the output:
 // «Request https://api.nasa.gov/EPIC/api/natural?api_key=DEMO_KEY»
-describe(`Request ${HOST}${ENDPOINT}?${queryParams(QUERY)}`, () => {
+describe(`Request ${HOST}${ENDPOINT}?${queryParams(urlQuery)}`, () => {
   let response: CancelableRequest | any;
 
   beforeAll(async () => {
     try {
       response = await got.get(`${HOST}${ENDPOINT}`, {
         responseType: 'json',
-        searchParams: QUERY,
+        searchParams: urlQuery,
       });
     } catch (error: any) {
       if (!error.response) {
