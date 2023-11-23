@@ -34,19 +34,19 @@ describeHostIf(`Request ${HOST}${ENDPOINT}?${queryParams(QUERY)}`, () => {
     }
   }, BEFORE_ALL_TIMEOUT);
 
-  it('Should have response status 200', () => {
+  test('Should have response status 200', () => {
     expect(response.statusCode).toBe(200);
   });
 
-  it('Should have content-type = application/json', () => {
+  test('Should have content-type = application/json', () => {
     expect(response.headers['content-type']).toBe('application/json');
   });
 
-  it('Should have array in the body', () => {
+  test('Should have array in the body', () => {
     expect(Array.isArray(response.body)).toBe(true);
   });
 
-  it('Should have identifiers in each element of the body', () => {
+  test('Should have identifiers in each element of the body', () => {
     // Just an example of a loop through array, not a pattern to follow in tests
     response.body.forEach((element: { identifier: string }) => {
       expect(element.identifier).not.toHaveLength(0);

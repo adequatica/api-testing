@@ -25,14 +25,16 @@ Example API for testing: [APOD NASA API](https://api.nasa.gov).
 
 `HOST=https://api.nasa.gov npm run test`
 
-- Run a single test or tests [that match a specific filename](https://jestjs.io/docs/cli#running-from-the-command-line) (for example `apod.test.ts`):
+- Run a single test or tests [that match a specific filename](https://jestjs.io/docs/cli#running-from-the-command-line) (for example `epic.test.ts`):
 
-`npm run test apod`
+`npm run test epic`
 
 ## Examples of Test Cases
 
 - `apod.test.ts` — test with JSON schema validation;
 - `epic.test.ts` — test will [skip](https://jestjs.io/docs/api#describeskipname-fn) in an inappropriate environment; test has [a loop through array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) for checking elements (just as an example, not as a pattern to follow).
+
+---
 
 ### A story about updating packages (2023-11-23) to the latest versions
 

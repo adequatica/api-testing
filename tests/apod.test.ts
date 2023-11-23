@@ -58,15 +58,15 @@ describe(`Request ${HOST}${ENDPOINT}?${queryParams(QUERY)}`, () => {
     }
   }, BEFORE_ALL_TIMEOUT);
 
-  it('Should have response status 200', () => {
+  test('Should have response status 200', () => {
     expect(response.statusCode).toBe(200);
   });
 
-  it('Should have content-type = application/json', () => {
+  test('Should have content-type = application/json', () => {
     expect(response.headers['content-type']).toBe('application/json');
   });
 
-  it('Should have valid schema', () => {
+  test('Should have valid schema', () => {
     expect(validateSchema(SCHEMA, response.body)).toBe(true);
   });
 });
