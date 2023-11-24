@@ -59,5 +59,8 @@ There were a lot of problems with the last versions of configuration Got and Jes
 5. And even this does not work without [ts-jest](https://github.com/kulshekhar/ts-jest) package and jest.config.ts settings:
    - `transform: {'^.+\\.(ts|tsx)?$': ['ts-jest', { useESM: true }]},`
    - `extensionsToTreatAsEsm: ['.ts']`
+6. Last but not least, changing filetype from `jest.config.js` to `jest.config.ts` leads to more configuration changes (I don't remember how)…
 
 At least, I would recommend using [Axios](https://axios-http.com/) (if you do not need the advanced feature of Got) as HTTP library to make it easier to set up a project. But in this repository, I continue to use Got, because _this is the way._
+
+Example of Jest + Axios can be found [here](https://github.com/adequatica/api-testing-comparison).
