@@ -24,15 +24,15 @@ Example API for testing: [APOD NASA API](https://api.nasa.gov).
 
 - Different tested host could be passed to tests through `.env` variable (it can be useful for testing different environments):
 
-`HOST=https://api.nasa.gov npm run test`
+`HOST=https://api.nasa.gov npm test`
 
 - Individual API key could be passed to tests through `.env` variable (otherwise, it will be used `DEMO_KEY` value):
 
-`API_KEY={api_key} npm run test`
+`API_KEY={api_key} npm test`
 
 - Run a single test or tests [that match a specific filename](https://jestjs.io/docs/cli#running-from-the-command-line) (for example `epic.test.ts`):
 
-`npm run test epic`
+`npm test epic`
 
 ## Examples of Test Cases
 
@@ -42,7 +42,7 @@ Example API for testing: [APOD NASA API](https://api.nasa.gov).
 
 ---
 
-### A story about updating packages (2023-11-23) to the latest versions
+### Story about updating packages (2023-11-23) to the latest versions
 
 There were a lot of problems with the last versions of configuration Got and Jest and TypeScript:
 
@@ -61,6 +61,7 @@ There were a lot of problems with the last versions of configuration Got and Jes
    - `extensionsToTreatAsEsm: ['.ts']`
 6. Last but not least, changing filetype from `jest.config.js` to `jest.config.ts` leads to more configuration changes (I don't remember how)…
 
-At least, I would recommend using [Axios](https://axios-http.com/) (if you do not need the advanced feature of Got) as HTTP library to make it easier to set up a project. But in this repository, I continue to use Got, because _this is the way._
-
+I would recommend using [Axios](https://axios-http.com/) as an HTTP client to make setup process much easier (if you do not need specific features of Got). But in this repository, I continue to use Got, because _this is the way._
 Example of Jest + Axios can be found [here](https://github.com/adequatica/api-testing-comparison).
+
+Contemporary API testing stack on [Vitest](https://vitest.dev/) + Node.js [`fetch()`](https://nodejs.org/dist/latest-v21.x/docs/api/globals.html#fetch) can be found [here](https://github.com/adequatica/api-vitesting).

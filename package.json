@@ -2,7 +2,11 @@
   "name": "api-testing",
   "version": "1.0.0",
   "description": "API Testing with TypeScript, Jest, and Got",
-  "keywords": ["api", "testing", "jest"],
+  "keywords": [
+    "api",
+    "testing",
+    "jest"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/adequatica/api-testing"
