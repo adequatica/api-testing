@@ -1,5 +1,5 @@
-import got from 'got';
 import type { CancelableRequest } from 'got';
+import got from 'got';
 
 import { API_KEY, BEFORE_ALL_TIMEOUT, HOST } from '../utils/env.ts';
 import { queryParams } from '../utils/query-params.ts';

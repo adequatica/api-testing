@@ -7,7 +7,7 @@ A basic set of packages to test API with TypeScript and HTTP client:
 - [Jest](https://jestjs.io) — testing framework;
 - [Jest-extended](https://jest-extended.jestcommunity.dev) — additional Jest matchers;
 - [Got](https://github.com/sindresorhus/got) — library for HTTP requests;
-- [Ajv](https://ajv.js.org) — the fastest JSON schema validator;
+- [Ajv](https://ajv.js.org) — JSON schema validator;
 - [date-fns](https://date-fns.org) — library for dates;
 - [Prettier](https://prettier.io) — code formatter;
 - [ESLint](https://eslint.org/) – code linter.
@@ -62,6 +62,7 @@ There were a lot of problems with the last versions of configuration Got and Jes
 6. Last but not least, changing filetype from `jest.config.js` to `jest.config.ts` leads to more configuration changes (I don't remember how)…
 
 I would recommend using [Axios](https://axios-http.com/) as an HTTP client to make setup process much easier (if you do not need specific features of Got). But in this repository, I continue to use Got, because _this is the way._
+
 Example of Jest + Axios can be found [here](https://github.com/adequatica/api-testing-comparison).
 
-Contemporary API testing stack on [Vitest](https://vitest.dev/) + Node.js [`fetch()`](https://nodejs.org/dist/latest-v21.x/docs/api/globals.html#fetch) can be found [here](https://github.com/adequatica/api-vitesting).
+**Contemporary API testing stack on [Vitest](https://vitest.dev/) + Node.js [`fetch()`](https://nodejs.org/dist/latest-v21.x/docs/api/globals.html#fetch) can be found [here](https://github.com/adequatica/api-vitesting).**
